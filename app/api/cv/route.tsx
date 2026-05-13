@@ -543,11 +543,11 @@ export async function GET() {
     // Génération du PDF
     const instance = pdf(<CVDocument />);
 
-    // Conversion en Buffer compatible NextResponse
-    const pdfBuffer = Buffer.from(await instance.toBuffer());
+    // Génération du stream PDF
+    const stream = await instance.toStream();
 
-    // Retour du fichier PDF
-    return new NextResponse(pdfBuffer, {
+    // Retour du PDF
+    return new NextResponse(stream as ReadableStream, {
       status: 200,
       headers: {
         "Content-Type": "application/pdf",
