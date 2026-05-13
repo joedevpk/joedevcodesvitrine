@@ -544,13 +544,12 @@ export async function GET() {
     const instance = pdf(<CVDocument />);
     const buffer = await instance.toBuffer();
 
-    return new NextResponse(new Uint8Array(buffer), {
+    const stream = await instance.toBuffer();
+
+    return new NextResponse(stream, {
       status: 200,
       headers: {
         "Content-Type": "application/pdf",
-        "Content-Disposition":
-          'inline; filename="JOE-DEV-CV.pdf"',
-        "Cache-Control": "no-store",
       },
     });
 
