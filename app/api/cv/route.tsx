@@ -540,14 +540,26 @@ const CVDocument = () => (
 
 export async function GET() {
   try {
-    // Génération du PDF
     const instance = pdf(<CVDocument />);
 
-    // Le stream PDF
+    // ⚠️ ici on récupère un ReadableStream
     const stream = await instance.toBuffer();
 
-    // Retour du PDF
-    return new Response(stream, {
+    // conversion SAFE en Buffer Node.js
+    const chunks: Uint8Array[] = [];
+
+    const reader = stream.getReader();
+    let done = false;
+
+    while (!done) {
+      const { value, done: d } = await reader.read();
+      done = d;
+      if (value) chunks.push(value);
+    }
+
+    const buffer = Buffer.concat(chunks.map((c) => Buffer.from(c)));
+
+    return new Response(buffer, {
       status: 200,
       headers: {
         "Content-Type": "application/pdf",
@@ -562,9 +574,7 @@ export async function GET() {
         success: false,
         message: "Erreur génération PDF",
       },
-      {
-        status: 500,
-      }
+      { status: 500 }
     );
   }
 }
