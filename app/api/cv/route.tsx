@@ -544,7 +544,7 @@ export async function GET() {
     const instance = pdf(<CVDocument />);
     const buffer = await instance.toBuffer();
 
-    return new NextResponse(buffer as BodyInit, {
+    return new NextResponse(new Uint8Array(buffer), {
       status: 200,
       headers: {
         "Content-Type": "application/pdf",
