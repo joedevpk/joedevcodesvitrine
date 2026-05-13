@@ -538,23 +538,27 @@ const CVDocument = () => (
    API ROUTE
 ========================= */
 
+import { NextResponse } from "next/server";
+import { pdf } from "@react-pdf/renderer";
+import CVDocument from "@/components/CVDocument";
+
 export async function GET() {
   try {
-
+    // Génération du PDF
     const instance = pdf(<CVDocument />);
-    const buffer = await instance.toBuffer();
 
-    const stream = await instance.toBuffer();
+    // Conversion en Buffer compatible NextResponse
+    const pdfBuffer = Buffer.from(await instance.toBuffer());
 
-    return new NextResponse(stream, {
+    // Retour du fichier PDF
+    return new NextResponse(pdfBuffer, {
       status: 200,
       headers: {
         "Content-Type": "application/pdf",
+        "Content-Disposition": 'attachment; filename="cv.pdf"',
       },
     });
-
   } catch (error) {
-
     console.error("PDF ERROR:", error);
 
     return NextResponse.json(
