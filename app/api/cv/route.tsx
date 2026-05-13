@@ -538,10 +538,6 @@ const CVDocument = () => (
    API ROUTE
 ========================= */
 
-import { NextResponse } from "next/server";
-import { pdf } from "@react-pdf/renderer";
-import CVDocument from "@/components/CVDocument";
-
 export async function GET() {
   try {
     // Génération du PDF
