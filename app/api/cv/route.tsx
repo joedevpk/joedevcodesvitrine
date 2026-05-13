@@ -542,24 +542,10 @@ export async function GET() {
   try {
     const instance = pdf(<CVDocument />);
 
-    // ⚠️ ici on récupère un ReadableStream
-    const stream = await instance.toBuffer();
+    // ⚠️ IMPORTANT : on récupère un Buffer (pas un stream)
+    const pdfBuffer = await instance.toBuffer();
 
-    // conversion SAFE en Buffer Node.js
-    const chunks: Uint8Array[] = [];
-
-    const reader = stream.getReader();
-    let done = false;
-
-    while (!done) {
-      const { value, done: d } = await reader.read();
-      done = d;
-      if (value) chunks.push(value);
-    }
-
-    const buffer = Buffer.concat(chunks.map((c) => Buffer.from(c)));
-
-    return new Response(buffer, {
+    return new Response(pdfBuffer as any, {
       status: 200,
       headers: {
         "Content-Type": "application/pdf",
