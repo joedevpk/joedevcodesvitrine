@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+/* =========================
+   DESIGN TOKENS
+========================= */
+:root {
+  --bg: #ffffff;
+  --text: #111111;
+  --muted: rgba(0, 0, 0, 0.6);
+  --border: rgba(0, 0, 0, 0.08);
+}
+
+/* =========================
+   BASE
+========================= */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Helvetica, Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================
+   LAYOUT SYSTEM
+========================= */
+section {
+  padding: 120px 7%;
+}
+
+.container-custom {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* =========================
+   TYPOGRAPHY SYSTEM
+========================= */
+.title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 1.125rem;
+}
+
+/* =========================
+   CARD SYSTEM
+========================= */
+.card {
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: white;
+  transition: all 0.35s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================
+   GLASS SYSTEM (premium)
+========================= */
+.glass {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(22px);
+  border: 1px solid var(--border);
+}
+
+/* =========================
+   ANIMATIONS (soft + premium)
+========================= */
+.fade-up {
+  animation: fadeUp 0.9s ease forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   3D EFFECT SYSTEM
+========================= */
+.perspective {
+  perspective: 1200px;
+}
+
+/* =========================
+   MICRO INTERACTIONS
+========================= */
+.hover-lift {
+  transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px);
+}
+
+/* =========================
+   ACCESSIBILITY / CLEAN UI
+========================= */
+button,
+a {
+  transition: all 0.25s ease;
+}
+
+*:focus {
+  outline: none;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
