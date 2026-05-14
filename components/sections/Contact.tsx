@@ -14,33 +14,31 @@ export default function Contact() {
   const [message, setMessage] = useState("");
 
   // ✅ TON NUMÉRO WHATSAPP
-  const whatsappNumber = "0816172056";
+  const whatsappNumber = "243816172056";
 
-  // ✅ SEND WHATSAPP
   const sendWhatsApp = () => {
     const text = `
-Bonjour 👋
+  Bonjour 👋
 
-Je souhaite discuter d’un projet digital premium.
+  Je souhaite discuter d’un projet digital premium.
 
-━━━━━━━━━━
+  Nom : ${name || "Non renseigné"}
 
-Nom : ${name || "Non renseigné"}
-
-Projet :
-${message || "Je souhaite créer un site moderne."}
+  Projet :
+  ${message || "Je souhaite créer un site moderne."}
 
 ━━━━━━━━━━
 
-Merci 🙌
-`;
+  Merci 🙌
+  `;
 
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
       text
     )}`;
 
-    window.open(url, "_blank");
+    window.location.href = url;
   };
+  
 
   return (
     <section
