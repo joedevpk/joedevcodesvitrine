@@ -14,7 +14,7 @@ export default function Contact() {
   const [message, setMessage] = useState("");
 
   // ✅ TON NUMÉRO WHATSAPP
-  const whatsappNumber = "33600000000";
+  const whatsappNumber = "0816172056";
 
   // ✅ SEND WHATSAPP
   const sendWhatsApp = () => {
