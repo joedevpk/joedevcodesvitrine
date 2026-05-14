@@ -19,16 +19,11 @@ export default function Contact() {
   const sendWhatsApp = () => {
     const text = `
   Bonjour 👋
-
   Je souhaite discuter d’un projet digital premium.
-
   Nom : ${name || "Non renseigné"}
 
   Projet :
   ${message || "Je souhaite créer un site moderne."}
-
-━━━━━━━━━━
-
   Merci 🙌
   `;
 
