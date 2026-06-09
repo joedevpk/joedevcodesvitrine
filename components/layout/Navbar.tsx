@@ -106,7 +106,7 @@ export default function Navbar() {
                    <div className="relative h-9 w-9 overflow-hidden rounded-full border border-white/20">
 
                      <img
-                       src="/images/profilee.jpg"
+                       src="/images/one.jpeg"
                        alt="Joe Dev"
                        className="h-full w-full object-cover"
                       />
