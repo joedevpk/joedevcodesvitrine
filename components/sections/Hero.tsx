@@ -264,7 +264,7 @@ export default function Hero() {
 
               {/* IMAGE */}
               <Image
-                src="/images/one.jpg"
+                src="/images/one.jpeg"
                 alt="Joe Dev"
                 fill
                 priority
